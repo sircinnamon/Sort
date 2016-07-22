@@ -80,6 +80,13 @@ public class SortEngine
 				sequence = h.getSequence();
 				if(time){t = h.getTime();}
 			}
+			if(s.equals("insertionsort")||s.equals("i"))
+			{
+				Insertionsort i = new Insertionsort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = i.sort();
+				sequence = i.getSequence();
+				if(time){t = i.getTime();}
+			}
 			if(verbose){printSeq(sequence);}
 			System.out.println((verbose?"Output = ":"")+Arrays.toString(sortedData));
 			if(time){System.out.println("Time: "+t+"ms");}

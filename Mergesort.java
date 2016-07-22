@@ -3,7 +3,6 @@ import java.util.Arrays;
 public class Mergesort
 {
 	private int[] data;
-	private int[] sortedData;
 	private LinkedList<int[]> sequence = new LinkedList<int[]>();
 	private boolean verbose = false;
 	private boolean timed = false;
@@ -24,9 +23,9 @@ public class Mergesort
 	{
 		if(verbose){sequence.add(Arrays.copyOf(data,data.length));}
 		if(timed){time = System.currentTimeMillis();}
-		sortedData = mergesort(data);
+		data = mergesort(data);
 		if(timed){time = System.currentTimeMillis()-time;}
-		return sortedData;
+		return data;
 	}
 
 	private int[] mergesort(int[] arr)

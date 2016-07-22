@@ -3,7 +3,6 @@ import java.util.Arrays;
 public class Heapsort
 {
 	private int[] data;
-	private int[] sortedData;
 	private LinkedList<int[]> sequence = new LinkedList<int[]>();
 	private boolean verbose = false;
 	private boolean timed = false;
@@ -29,9 +28,9 @@ public class Heapsort
 	{
 		if(verbose){sequence.add(Arrays.copyOf(data,data.length));}
 		if(timed){time = System.currentTimeMillis();}
-		sortedData = heapsort(data);
+		data = heapsort(data);
 		if(timed){time = System.currentTimeMillis()-time;}
-		return sortedData;
+		return data;
 	}
 
 	private int[] heapsort(int[] arr)

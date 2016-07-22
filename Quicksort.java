@@ -3,7 +3,6 @@ import java.util.Arrays;
 public class Quicksort
 {
 	private int[] data;
-	private int[] sortedData;
 	private LinkedList<int[]> sequence = new LinkedList<int[]>();
 	private boolean verbose = false;
 	private boolean timed = false;
@@ -24,9 +23,9 @@ public class Quicksort
 	{
 		if(verbose){sequence.add(Arrays.copyOf(data,data.length));}
 		if(timed){time = System.currentTimeMillis();}
-		sortedData = quicksort(data, data.length-1, 0);
+		data = quicksort(data, data.length-1, 0);
 		if(timed){time = System.currentTimeMillis()-time;}
-		return sortedData;
+		return data;
 	}
 
 	public int[] quicksort(int[] arr, int end, int start)
