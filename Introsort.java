@@ -37,13 +37,8 @@ public class Introsort
 		}
 		else
 		{
-			//select a pivot index
-			//arr = pivotMOT(arr);
-			//int pivot = arr[(int)Math.floor(arr.length/2)];
-			//arr = partition(arr);
 			if(verbose){sequence.add(Arrays.copyOf(arr,arr.length));}
-			//pivot = firstIndex(arr,pivot);
-			int pivot = partition(arr);
+			int pivot = partition(arr); //Partitions the data and chooses an MOT pivot
 			int[] sub;
 			if(pivot > 0)
 			{	
@@ -63,11 +58,9 @@ public class Introsort
 	private int partition(int[] arr)
 	{
 		//Median-of-3 partitioning
-		//Input SHOULD be sanitized with pivotMOT but if not it just un-optimizes pivot selection
-		//arr = pivotMOT(arr);
 		int pivot =  pivotMOT(arr);
 		int swap;
-		for(int i = 0; i<pivot; i++)
+		for(int i = 0; i<arr.length; i++)
 		{
 			if(i<pivot && arr[i] >= arr[pivot])
 			{
@@ -79,15 +72,14 @@ public class Introsort
 				pivot--;
 				i--;
 			}
-			else if(i>pivot && arr[i] <= arr[pivot])
+			else if(i>pivot && arr[i] < arr[pivot])
 			{
-				//swap into index pivot-1 then swap with pivot
+				//swap into index pivot+1 then swap with pivot
 				swap = arr[i];
 				arr[i] = arr[pivot+1];
 				arr[pivot+1] = arr[pivot];
 				arr[pivot] = swap;
 				pivot++;
-				i--;
 			}
 		}
 		return pivot;
@@ -169,15 +161,6 @@ public class Introsort
 	private int getRight(int i)
 	{
 		return (2*i) + 2;
-	}
-
-	private int firstIndex(int[] arr, int x)
-	{
-		for(int i = 0; i<arr.length;i++)
-		{
-			if(arr[i]==x){return i;}
-		}
-		return -1;
 	}
 	public int[][] getSequence()
 	{
