@@ -17,3 +17,5 @@ flags are:
 -s = size: the next argument is an int for how large the data array should be
 
 -q = quiet: Negates verbose. Disables printing of sorted output.
+
+-a = authenticate: Output java "isSorted" on output

@@ -16,6 +16,7 @@ public class SortEngine
 	public static String filename;
 	public static boolean getSize = false;
 	public static boolean quiet = false;
+	public static boolean auth = false;
 	public static int dataSize = 10;
 	public static LinkedList<String> modes = new LinkedList<String>();
 
@@ -31,6 +32,7 @@ public class SortEngine
 			else if(s.equals("-f")){getFile = true;}
 			else if(s.equals("-s")){getSize = true;}
 			else if(s.equals("-q")){quiet = true;verbose=false;}
+			else if(s.equals("-a")){auth = true;}
 			else{modes.add(s.toLowerCase());}
 		}
 		if(modes.size()==0){modes.add("quicksort");}
@@ -96,9 +98,24 @@ public class SortEngine
 				sequence = i.getSequence();
 				if(time){t = i.getTime();}
 			}
+			if(s.equals("selectionsort")||s.equals("selection"))
+			{
+				Selectionsort x = new Selectionsort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = x.sort();
+				sequence = x.getSequence();
+				if(time){t = x.getTime();}
+			}
+			if(s.equals("timsort")||s.equals("tim"))
+			{
+				Timsort x = new Timsort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = x.sort();
+				sequence = x.getSequence();
+				if(time){t = x.getTime();}
+			}
 			if(verbose){printSeq(sequence);}
 			if(!quiet){System.out.println((verbose?"Output = ":"")+Arrays.toString(sortedData));}
 			if(time){System.out.println("Time: "+t+"ms");}
+			if(auth){System.out.println("Sorted: "+ isSorted(sortedData));}
 
 		}
 
@@ -128,5 +145,15 @@ public class SortEngine
 		{
 			System.out.println(i+". "+Arrays.toString(seq[i]));
 		}
+	}
+
+	public static boolean isSorted(int[] arr)
+	{
+		boolean sorted = true;
+		for(int i = 1; i<arr.length;i++)
+		{
+			if(arr[i-1]>arr[i]){return false;}
+		}
+		return sorted;
 	}
 }
