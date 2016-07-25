@@ -98,7 +98,7 @@ public class SortEngine
 				sequence = i.getSequence();
 				if(time){t = i.getTime();}
 			}
-			if(s.equals("selectionsort")||s.equals("selection"))
+			if(s.equals("selectionsort")||s.equals("selection")||s.equals("s"))
 			{
 				Selectionsort x = new Selectionsort(Arrays.copyOf(data,data.length),verbose,time);
 				sortedData = x.sort();
@@ -108,6 +108,13 @@ public class SortEngine
 			if(s.equals("timsort")||s.equals("tim"))
 			{
 				Timsort x = new Timsort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = x.sort();
+				sequence = x.getSequence();
+				if(time){t = x.getTime();}
+			}
+			if(s.equals("shellsort")||s.equals("shell"))
+			{
+				Shellsort x = new Shellsort(Arrays.copyOf(data,data.length),verbose,time);
 				sortedData = x.sort();
 				sequence = x.getSequence();
 				if(time){t = x.getTime();}
