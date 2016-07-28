@@ -126,6 +126,13 @@ public class SortEngine
 				sequence = x.getSequence();
 				if(time){t = x.getTime();}
 			}
+			if(s.equals("bintreesort")||s.equals("bintree")||s.equals("tree"))
+			{
+				BinTreesort x = new BinTreesort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = x.sort();
+				sequence = x.getSequence();
+				if(time){t = x.getTime();}
+			}
 			if(verbose){printSeq(sequence);}
 			if(!quiet){System.out.println((verbose?"Output = ":"")+Arrays.toString(sortedData));}
 			if(time){System.out.println("Time: "+t+"ms");}
