@@ -140,6 +140,13 @@ public class SortEngine
 				sequence = x.getSequence();
 				if(time){t = x.getTime();}
 			}
+			if(s.equals("librarysort")||s.equals("library")||s.equals("lib"))
+			{
+				Librarysort x = new Librarysort(Arrays.copyOf(data,data.length),verbose,time);
+				sortedData = x.sort();
+				sequence = x.getSequence();
+				if(time){t = x.getTime();}
+			}
 			if(verbose){printSeq(sequence);}
 			if(!quiet){System.out.println((verbose?"Output = ":"")+Arrays.toString(sortedData));}
 			if(time){System.out.println("Time: "+t+"ms");}
